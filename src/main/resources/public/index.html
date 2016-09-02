@@ -230,18 +230,19 @@
             document.getElementById("component-demo-container5").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;");
             document.getElementById("intOnOffSwitch1").disabled = true;
             document.getElementById("intOnOffSwitch2").disabled = true;
-            document.getElementById("windowOpenCloseSwitch").disabled = false;  // Disabled for demo config. MAH
+            document.getElementById("windowOpenCloseSwitch").disabled = true;
             document.getElementById("intLightOnOffSwitch").disabled = true;
         }
 
         function manual() {
             document.getElementById("component-demo-container2").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; ");
             document.getElementById("component-demo-container3").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; ");
-            document.getElementById("component-demo-container4").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; ");
+//            document.getElementById("component-demo-container4").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; ");
+            document.getElementById("component-demo-container4").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;"); // For demo config. MAH
             document.getElementById("component-demo-container5").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; ");
             document.getElementById("intOnOffSwitch1").disabled = false;
             document.getElementById("intOnOffSwitch2").disabled = false;
-            document.getElementById("windowOpenCloseSwitch").disabled = false;
+            document.getElementById("windowOpenCloseSwitch").disabled = true;  // Disabled for demo config. MAH
             document.getElementById("intLightOnOffSwitch").disabled = false;
         }
 
