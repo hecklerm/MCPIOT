@@ -230,7 +230,7 @@
             document.getElementById("component-demo-container5").setAttribute("style", "margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;");
             document.getElementById("intOnOffSwitch1").disabled = true;
             document.getElementById("intOnOffSwitch2").disabled = true;
-            document.getElementById("windowOpenCloseSwitch").disabled = true;
+            document.getElementById("windowOpenCloseSwitch").disabled = false;  // Disabled for demo config. MAH
             document.getElementById("intLightOnOffSwitch").disabled = true;
         }
 
@@ -323,6 +323,8 @@
     </script>
 </head>
 <body onload='getIP()' bgcolor="#cccccc">
+<!--<body onload='getIP()' bgcolor="#cccccc" style="background-image: url('../images/PivotalCloudFoundry-Logo-Horizontal-OnTeal.png')">-->
+
 <div class="boxTitle" style="margin-top: 15px; margin-left: 15px; margin-right: 15px;">
     <div style="text-align: center; padding: 10px;">Cloud Power Monitoring for IoT</div>
 </div>
@@ -384,100 +386,111 @@
     });
 </script>
 
-<div class="box" style="float: left; margin-top: 15px; margin-left: 15px; width: 340px; height: 370px;">
-    <div class="switch-label">Mode:</div>
-    <div id="component-demo-container1" style="margin-top: -55px; margin-left: 183px;">
-        <div class="extOnOffSwitch">
-            <input type="checkbox" name="extOnOffSwitch"
-                   class="extOnOffSwitch-checkbox" id="extOnOffSwitch1"
-                   onchange="mode1()">
-            <label class="extOnOffSwitch-label" for="extOnOffSwitch1">
-                <div class="extOnOffSwitch-inner"></div>
-                <div class="extOnOffSwitch-switch"></div>
-            </label>
-        </div>
-    </div>
-
-    <div class="switch-label" ">Power:</div>
-    <div id="component-demo-container2"
-         style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=50); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
-        <div class="outSwitch">
-            <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <path stroke="#34495e"
-                      d="M 5 14.5 C 5 12.567 6.1193 11 7.5 11 C 8.8807 11 10 12.567 10 14.5 C 10 16.433 8.8807 18 7.5 18 C 6.1193 18 5 16.433 5 14.5 ZM 14 10 L 23.68 10 C 24.409 10 25 10.9299 25 12.0769 L 25 16.9231 C 25 18.0701 24.409 19 23.68 19 L 14 19 L 14 10 ZM 1 11 L 1 18 C 1 19.6569 2.3431 21 4 21 L 24 21 C 25.6569 21 27 19.6569 27 18 L 27 11 C 27 9.3431 25.6569 8 24 8 L 4 8 C 2.3431 8 1 9.3431 1 11 ZM 6 14.5 C 6 15.8807 6.6716 17 7.5 17 C 8.3284 17 9 15.8807 9 14.5 C 9 13.1193 8.3284 12 7.5 12 C 6.6716 12 6 13.1193 6 14.5 ZM 20 13 L 20 18 L 21 18 L 21 11 L 20.0844 11 C 20.0065 11.3594 19.8312 11.6094 19.5195 11.7656 C 19.2078 11.9219 18.5844 12.0313 18 12.0313 L 18 13 L 20 13 Z"/>
-            </svg>
-            <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
-                <input type="checkbox" name="intOnOffSwitch"
-                       class="intOnOffSwitch-checkbox" id="intOnOffSwitch1" checked disabled
-                       onchange="mode2()">
-                <label class="intOnOffSwitch-label" for="intOnOffSwitch1">
-                    <div class="intOnOffSwitch-inner"></div>
-                    <div class="intOnOffSwitch-switch"></div>
+<div id="switchesandlogo" style="float: left; margin-top: 15px; margin-left: 15px; width: 340px; height: 480px;">
+    <!--<div class="box" style="float: left; margin-top: 15px; margin-left: 15px; width: 340px; height: 370px;">-->
+    <div class="box" style="float: left; width: 340px; height: 370px;">
+        <div class="switch-label">Mode:</div>
+        <div id="component-demo-container1" style="margin-top: -55px; margin-left: 183px;">
+            <div class="extOnOffSwitch">
+                <input type="checkbox" name="extOnOffSwitch"
+                       class="extOnOffSwitch-checkbox" id="extOnOffSwitch1"
+                       onchange="mode1()">
+                <label class="extOnOffSwitch-label" for="extOnOffSwitch1">
+                    <div class="extOnOffSwitch-inner"></div>
+                    <div class="extOnOffSwitch-switch"></div>
                 </label>
             </div>
         </div>
-    </div>
 
-    <div class="switch-label">Status Lamp:</div>
-    <div id="component-demo-container3"
-         style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
-        <div class="outSwitch">
-            <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <path stroke="#34495e"
-                      d="M 14.0 1.0 C 8.0 1.0 4.0 5.0 4.0 10.0 C 4.0 14.0 6.0 17.0 9.0 18.0 C 9.0 18.0 9.0 19.0 9.0 19.0 C 9.0 19.0 9.0 25.0 9.0 25.0 C 9.0 25.0 10.0 26.0 11.0 26.0 C 12.0 27.0 12.0 27.0 14.0 27.0 C 15.0 27.0 15.0 27.0 16.0 26.0 C 17.0 26.0 18.0 25.0 18.0 25.0 C 18.0 25.0 18.0 19.0 18.0 19.0 C 18.0 19.0 18.0 18.0 18.0 18.0 C 21.0 17.0 23.0 14.0 23.0 10.0 C 23.0 5.0 19.0 1.0 14.0 1.0 C 14.0 1.0 14.0 1.0 14.0 1.0 ZM 14.0 3.0 C 18.0 3.0 21.0 6.0 21.0 10.0 C 21.0 13.0 19.0 16.0 17.0 17.0 C 17.0 17.0 16.0 19.0 16.0 19.0 C 16.0 20.0 15.0 20.0 14.0 20.0 C 12.0 20.0 11.0 20.0 11.0 19.0 C 11.0 19.0 10.0 17.0 10.0 17.0 C 8.0 16.0 6.0 13.0 6.0 10.0 C 6.0 6.0 9.0 3.0 14.0 3.0 C 14.0 3.0 14.0 3.0 14.0 3.0 Z"/>
-            </svg>
-            <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
-                <input type="checkbox" name="intOnOffSwitch"
-                       class="intOnOffSwitch-checkbox" id="intOnOffSwitch2" checked disabled
-                       onchange="mode3()">
-                <label class="intOnOffSwitch-label" for="intOnOffSwitch2">
-                    <div class="intOnOffSwitch-inner"></div>
-                    <div class="intOnOffSwitch-switch"></div>
-                </label>
+        <div class="switch-label" ">Power:</div>
+        <div id="component-demo-container2"
+             style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=50); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
+            <div class="outSwitch">
+                <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <path stroke="#34495e"
+                          d="M 5 14.5 C 5 12.567 6.1193 11 7.5 11 C 8.8807 11 10 12.567 10 14.5 C 10 16.433 8.8807 18 7.5 18 C 6.1193 18 5 16.433 5 14.5 ZM 14 10 L 23.68 10 C 24.409 10 25 10.9299 25 12.0769 L 25 16.9231 C 25 18.0701 24.409 19 23.68 19 L 14 19 L 14 10 ZM 1 11 L 1 18 C 1 19.6569 2.3431 21 4 21 L 24 21 C 25.6569 21 27 19.6569 27 18 L 27 11 C 27 9.3431 25.6569 8 24 8 L 4 8 C 2.3431 8 1 9.3431 1 11 ZM 6 14.5 C 6 15.8807 6.6716 17 7.5 17 C 8.3284 17 9 15.8807 9 14.5 C 9 13.1193 8.3284 12 7.5 12 C 6.6716 12 6 13.1193 6 14.5 ZM 20 13 L 20 18 L 21 18 L 21 11 L 20.0844 11 C 20.0065 11.3594 19.8312 11.6094 19.5195 11.7656 C 19.2078 11.9219 18.5844 12.0313 18 12.0313 L 18 13 L 20 13 Z"/>
+                </svg>
+                <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
+                    <input type="checkbox" name="intOnOffSwitch"
+                           class="intOnOffSwitch-checkbox" id="intOnOffSwitch1" checked disabled
+                           onchange="mode2()">
+                    <label class="intOnOffSwitch-label" for="intOnOffSwitch1">
+                        <div class="intOnOffSwitch-inner"></div>
+                        <div class="intOnOffSwitch-switch"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="switch-label">Status Lamp:</div>
+        <div id="component-demo-container3"
+             style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
+            <div class="outSwitch">
+                <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <path stroke="#34495e"
+                          d="M 14.0 1.0 C 8.0 1.0 4.0 5.0 4.0 10.0 C 4.0 14.0 6.0 17.0 9.0 18.0 C 9.0 18.0 9.0 19.0 9.0 19.0 C 9.0 19.0 9.0 25.0 9.0 25.0 C 9.0 25.0 10.0 26.0 11.0 26.0 C 12.0 27.0 12.0 27.0 14.0 27.0 C 15.0 27.0 15.0 27.0 16.0 26.0 C 17.0 26.0 18.0 25.0 18.0 25.0 C 18.0 25.0 18.0 19.0 18.0 19.0 C 18.0 19.0 18.0 18.0 18.0 18.0 C 21.0 17.0 23.0 14.0 23.0 10.0 C 23.0 5.0 19.0 1.0 14.0 1.0 C 14.0 1.0 14.0 1.0 14.0 1.0 ZM 14.0 3.0 C 18.0 3.0 21.0 6.0 21.0 10.0 C 21.0 13.0 19.0 16.0 17.0 17.0 C 17.0 17.0 16.0 19.0 16.0 19.0 C 16.0 20.0 15.0 20.0 14.0 20.0 C 12.0 20.0 11.0 20.0 11.0 19.0 C 11.0 19.0 10.0 17.0 10.0 17.0 C 8.0 16.0 6.0 13.0 6.0 10.0 C 6.0 6.0 9.0 3.0 14.0 3.0 C 14.0 3.0 14.0 3.0 14.0 3.0 Z"/>
+                </svg>
+                <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
+                    <input type="checkbox" name="intOnOffSwitch"
+                           class="intOnOffSwitch-checkbox" id="intOnOffSwitch2" checked disabled
+                           onchange="mode3()">
+                    <label class="intOnOffSwitch-label" for="intOnOffSwitch2">
+                        <div class="intOnOffSwitch-inner"></div>
+                        <div class="intOnOffSwitch-switch"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="switch-label">Windows:</div>
+        <div id="component-demo-container4"
+             style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
+            <div class="outSwitch">
+                <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <path stroke="#34495e"
+                          d="M 5 14.5 C 5 12.567 6.1193 11 7.5 11 C 8.8807 11 10 12.567 10 14.5 C 10 16.433 8.8807 18 7.5 18 C 6.1193 18 5 16.433 5 14.5 ZM 14 10 L 23.68 10 C 24.409 10 25 10.9299 25 12.0769 L 25 16.9231 C 25 18.0701 24.409 19 23.68 19 L 14 19 L 14 10 ZM 1 11 L 1 18 C 1 19.6569 2.3431 21 4 21 L 24 21 C 25.6569 21 27 19.6569 27 18 L 27 11 C 27 9.3431 25.6569 8 24 8 L 4 8 C 2.3431 8 1 9.3431 1 11 ZM 6 14.5 C 6 15.8807 6.6716 17 7.5 17 C 8.3284 17 9 15.8807 9 14.5 C 9 13.1193 8.3284 12 7.5 12 C 6.6716 12 6 13.1193 6 14.5 ZM 20 13 L 20 18 L 21 18 L 21 11 L 20.0844 11 C 20.0065 11.3594 19.8312 11.6094 19.5195 11.7656 C 19.2078 11.9219 18.5844 12.0313 18 12.0313 L 18 13 L 20 13 Z"/>
+                </svg>
+                <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
+                    <input type="checkbox" name="intOnOffSwitch"
+                           class="intOnOffSwitch-checkbox" id="windowOpenCloseSwitch" checked disabled
+                           onchange="setWindow()">
+                    <label class="intOnOffSwitch-label" for="windowOpenCloseSwitch">
+                        <div class="intOnOffSwitch-inner"></div>
+                        <div class="intOnOffSwitch-switch"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="switch-label">Interior Light:</div>
+        <div id="component-demo-container5"
+             style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
+            <div class="outSwitch">
+                <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <path stroke="#34495e"
+                          d="M 14.0 1.0 C 8.0 1.0 4.0 5.0 4.0 10.0 C 4.0 14.0 6.0 17.0 9.0 18.0 C 9.0 18.0 9.0 19.0 9.0 19.0 C 9.0 19.0 9.0 25.0 9.0 25.0 C 9.0 25.0 10.0 26.0 11.0 26.0 C 12.0 27.0 12.0 27.0 14.0 27.0 C 15.0 27.0 15.0 27.0 16.0 26.0 C 17.0 26.0 18.0 25.0 18.0 25.0 C 18.0 25.0 18.0 19.0 18.0 19.0 C 18.0 19.0 18.0 18.0 18.0 18.0 C 21.0 17.0 23.0 14.0 23.0 10.0 C 23.0 5.0 19.0 1.0 14.0 1.0 C 14.0 1.0 14.0 1.0 14.0 1.0 ZM 14.0 3.0 C 18.0 3.0 21.0 6.0 21.0 10.0 C 21.0 13.0 19.0 16.0 17.0 17.0 C 17.0 17.0 16.0 19.0 16.0 19.0 C 16.0 20.0 15.0 20.0 14.0 20.0 C 12.0 20.0 11.0 20.0 11.0 19.0 C 11.0 19.0 10.0 17.0 10.0 17.0 C 8.0 16.0 6.0 13.0 6.0 10.0 C 6.0 6.0 9.0 3.0 14.0 3.0 C 14.0 3.0 14.0 3.0 14.0 3.0 Z"/>
+                </svg>
+                <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
+                    <input type="checkbox" name="intOnOffSwitch"
+                           class="intOnOffSwitch-checkbox" id="intLightOnOffSwitch" checked disabled
+                           onchange="setIntLight()">
+                    <label class="intOnOffSwitch-label" for="intLightOnOffSwitch">
+                        <div class="intOnOffSwitch-inner"></div>
+                        <div class="intOnOffSwitch-switch"></div>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="switch-label">Windows:</div>
-    <div id="component-demo-container4"
-         style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
-        <div class="outSwitch">
-            <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <path stroke="#34495e"
-                      d="M 5 14.5 C 5 12.567 6.1193 11 7.5 11 C 8.8807 11 10 12.567 10 14.5 C 10 16.433 8.8807 18 7.5 18 C 6.1193 18 5 16.433 5 14.5 ZM 14 10 L 23.68 10 C 24.409 10 25 10.9299 25 12.0769 L 25 16.9231 C 25 18.0701 24.409 19 23.68 19 L 14 19 L 14 10 ZM 1 11 L 1 18 C 1 19.6569 2.3431 21 4 21 L 24 21 C 25.6569 21 27 19.6569 27 18 L 27 11 C 27 9.3431 25.6569 8 24 8 L 4 8 C 2.3431 8 1 9.3431 1 11 ZM 6 14.5 C 6 15.8807 6.6716 17 7.5 17 C 8.3284 17 9 15.8807 9 14.5 C 9 13.1193 8.3284 12 7.5 12 C 6.6716 12 6 13.1193 6 14.5 ZM 20 13 L 20 18 L 21 18 L 21 11 L 20.0844 11 C 20.0065 11.3594 19.8312 11.6094 19.5195 11.7656 C 19.2078 11.9219 18.5844 12.0313 18 12.0313 L 18 13 L 20 13 Z"/>
-            </svg>
-            <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
-                <input type="checkbox" name="intOnOffSwitch"
-                       class="intOnOffSwitch-checkbox" id="windowOpenCloseSwitch" checked disabled
-                       onchange="setWindow()">
-                <label class="intOnOffSwitch-label" for="windowOpenCloseSwitch">
-                    <div class="intOnOffSwitch-inner"></div>
-                    <div class="intOnOffSwitch-switch"></div>
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="switch-label">Interior Light:</div>
-    <div id="component-demo-container5"
-         style="margin-top: -55px; margin-left: 172px; filter: alpha(opacity=40); -khtml-opacity: 0.4; -moz-opacity: 0.4; opacity: 0.4;">
-        <div class="outSwitch">
-            <svg class="outSwitch-svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <path stroke="#34495e"
-                      d="M 14.0 1.0 C 8.0 1.0 4.0 5.0 4.0 10.0 C 4.0 14.0 6.0 17.0 9.0 18.0 C 9.0 18.0 9.0 19.0 9.0 19.0 C 9.0 19.0 9.0 25.0 9.0 25.0 C 9.0 25.0 10.0 26.0 11.0 26.0 C 12.0 27.0 12.0 27.0 14.0 27.0 C 15.0 27.0 15.0 27.0 16.0 26.0 C 17.0 26.0 18.0 25.0 18.0 25.0 C 18.0 25.0 18.0 19.0 18.0 19.0 C 18.0 19.0 18.0 18.0 18.0 18.0 C 21.0 17.0 23.0 14.0 23.0 10.0 C 23.0 5.0 19.0 1.0 14.0 1.0 C 14.0 1.0 14.0 1.0 14.0 1.0 ZM 14.0 3.0 C 18.0 3.0 21.0 6.0 21.0 10.0 C 21.0 13.0 19.0 16.0 17.0 17.0 C 17.0 17.0 16.0 19.0 16.0 19.0 C 16.0 20.0 15.0 20.0 14.0 20.0 C 12.0 20.0 11.0 20.0 11.0 19.0 C 11.0 19.0 10.0 17.0 10.0 17.0 C 8.0 16.0 6.0 13.0 6.0 10.0 C 6.0 6.0 9.0 3.0 14.0 3.0 C 14.0 3.0 14.0 3.0 14.0 3.0 Z"/>
-            </svg>
-            <div class="intOnOffSwitch" style="margin-top: -63px; margin-left: 40px;">
-                <input type="checkbox" name="intOnOffSwitch"
-                       class="intOnOffSwitch-checkbox" id="intLightOnOffSwitch" checked disabled
-                       onchange="setIntLight()">
-                <label class="intOnOffSwitch-label" for="intLightOnOffSwitch">
-                    <div class="intOnOffSwitch-inner"></div>
-                    <div class="intOnOffSwitch-switch"></div>
-                </label>
-            </div>
-        </div>
+    <!--<div id="pivlogo" style="float: left; clear: left; height: 100px; width: 320px;">-->
+    <div id="pivlogo" style="float: left; clear: left; height: 100px; width: 320px; margin-top: 20px">
+        <img src="../images/PivotalCloudFoundry-Logo-Horizontal-OnTeal_340px.png" alt="" />
     </div>
 </div>
+
+<!--style="clear: left; float: left"-->
+<!--<div id="pcflogo" style="float: left; margin-top: 15px; margin-left: 15px; width: 320px; height: 100px;">-->
+<!--</div>-->
 
 <div class="box" style="float: left; margin-top: 15px; margin-left: 22px; width: 340px; height: 480px;">
     <div style='padding: 10px;'>
